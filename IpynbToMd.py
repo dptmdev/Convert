@@ -36,7 +36,7 @@ def convert_folder_to_markdown(folder_path, output_folder):
             output_dir = os.path.join(output_folder, relative_path)
             os.makedirs(output_dir, exist_ok=True)
 
-            if filename.endswith('.ipynb'):
+            if filename.lower().endswith('.ipynb'):
                 markdown_content = convert_ipynb_to_markdown(input_file_path)
                 md_filename = filename.replace('.ipynb', '.md')
                 md_file_path = os.path.join(output_dir, md_filename)
@@ -46,7 +46,7 @@ def convert_folder_to_markdown(folder_path, output_folder):
 
                 print(f"Converted {input_file_path} to {md_file_path}")
 
-            elif filename.endswith('.csv'):
+            elif filename.lower().endswith('.csv'):
                 markdown_table = convert_csv_to_markdown(input_file_path)
                 md_filename = filename.replace('.csv', '.md')
                 md_file_path = os.path.join(output_dir, md_filename)
